@@ -8,7 +8,6 @@ class SearchForm extends React.Component {
   constructor(props){
     super(props);
 
-
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
       searchFormBoard: '',
@@ -16,9 +15,6 @@ class SearchForm extends React.Component {
     };
   }
 
-  updateInputValue(event){
-
-  }
 
   onSubmit(event){
     event.preventDefault();
@@ -35,8 +31,7 @@ class SearchForm extends React.Component {
       <div id="searchForm">
         <form onSubmit={this.onSubmit}>
           <label> Choose your reddit board </label>
-          <input type="text" className="searchFormBoard" defaultValue={'Choose Your Board!'}  onChange={this.updateInputValue}/>
-
+          <input type="text" className="searchFormBoard" defaultValue={'Choose Your Board!'}/>
         </form>
       </div>
     );
