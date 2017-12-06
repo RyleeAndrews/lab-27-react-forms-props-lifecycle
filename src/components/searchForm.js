@@ -1,42 +1,42 @@
 'use strict';
 
 import React from 'react';
-
+import superagent from 'superagent';
 
 
 class SearchForm extends React.Component {
   constructor(props){
-    super(props)
+    super(props);
 
-    this.searchForm = this.searchForm.bind(this);
 
+    this.onSubmit = this.onSubmit.bind(this);
     this.state = {
-      inputValue: '',
+      searchFormBoard: '',
+      searchFormLimit: '',
     };
   }
 
-  updateInputValue(event){
-    this.setState({
-      inputValue: event.target.value,
-    })
+
+  onSubmit(event){
+    event.preventDefault();
+    let redditApi = `http://reddit.com/r/${this.state.searchFormBoard}.json?limit=${this.state.searchFormLimit}`;
+    superagent.get(redditApi)
+      .then( result => {
+        this.setState({searchFormBoard: result});
+      });
   }
 
   render(){
+    console.log(this.state);
     return (
       <div id="searchForm">
-        <form>
-          <h4> Choose your reddit board <h4>
-          {
-            this.props.searchForm.map( (board,i) => {
-              <div key={i}>
-              <input value={this.state.inputValue} onChange={event => this.updateInputValue(event)}/>
-              </div>
-            })
-          }
+        <form onSubmit={this.onSubmit}>
+          <label> Choose your reddit board </label>
+          <input type="text" className="searchFormBoard" defaultValue={'Choose Your Board!'}  onChange={this.updateInputValue}/>
+
         </form>
       </div>
     );
   }
 }
-
 export default SearchForm;
