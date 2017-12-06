@@ -16,6 +16,9 @@ class SearchForm extends React.Component {
     };
   }
 
+  updateInputValue(event){
+
+  }
 
   onSubmit(event){
     event.preventDefault();
