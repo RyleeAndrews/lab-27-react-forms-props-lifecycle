@@ -15,6 +15,7 @@ class SearchForm extends React.Component {
       searchFormBoard: '',
       searchFormLimit: '',
       searchFormList: [],
+      searchError: false,
     };
   }
 
@@ -29,23 +30,27 @@ class SearchForm extends React.Component {
     let redditApi = `https://www.reddit.com/r/${this.state.searchFormBoard}.json?limit=${this.state.searchFormLimit}`;
     ApiHandle.fetchData(redditApi)
       .then( result => {
-        console.log(redditApi);
-        this.setState({searchFormList: result.data.children});
-      });
+        if(result){
+          console.log(redditApi);
+          this.setState({searchFormList: result.data.children,searchError: false});
+        }else{
+          this.setState({searchError: true});
+        }
+      })
+      .catch( err => err);
   }
 
   render(){
     console.log('searchFormList',this.state.searchFormList);
     return (
-      <div id="searchForm">
+      <div>
         <form onSubmit={this.onSubmit}>
-          <label>
+          <label className="searchForm">
           Pick Your Reddit Board:
-            <input type="text" value={this.state.searchFormBoard} onChange={this.onChangeOfBoard}/>
+            <input style={{borderColor: this.state.searchError ? 'red' : ''}} className={this.state.searchFormBoard} type="text" value={this.state.searchFormBoard} onChange={this.onChangeOfBoard}/>
           </label>
-          <br/>
-          <label>
-          Pick your number of displayed results
+          <label className="searchLimit">
+          Pick your number of displayed results:
             <input type="text" value={this.state.searchFormLimit} onChange={this.onChangeOfLimit}/>
           </label>
           <SearchFormList list={this.state.searchFormList}/>
