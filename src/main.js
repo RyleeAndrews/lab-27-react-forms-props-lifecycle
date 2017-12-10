@@ -9,9 +9,7 @@ class App extends React.Component {
   constructor(props){
     super(props);
 
-    this.state = {
-      searchForm: [],
-    };
+    
 
     // this.selectBoard = this.selectBoard.bind(this);
   }
@@ -26,9 +24,9 @@ class App extends React.Component {
   //   else{
   //     superagent.get(redditApi)
   //       .then( result => {
-  //         let search= result.body.results;
-  //         localStorage.setItem('searchForm', JSON.stringify(searchFormBoard));
-  //         this.setState({searchFormBoard});
+          // let search= result.body.results;
+          // localStorage.setItem('searchForm', JSON.stringify(searchFormBoard));
+          // this.setState({searchFormBoard});
   //       })
   //       .catch(console.log('error'));
   //   }
