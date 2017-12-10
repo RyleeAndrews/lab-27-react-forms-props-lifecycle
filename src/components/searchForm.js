@@ -55,7 +55,10 @@ class SearchForm extends React.Component {
           {
             this.state.searchFormList.map((article,i) =>
               <li key={i}>
-                <a href={article.data.url}> {article.data.title} </a>
+                <a href={article.data.url}>
+                  <h3>{article.data.title}</h3>
+                  <p>Amount of Up Votes: {article.data.ups}</p>
+                </a>
               </li>
             )
           }
