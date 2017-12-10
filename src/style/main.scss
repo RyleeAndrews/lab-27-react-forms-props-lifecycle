@@ -1,11 +1,38 @@
 body {
-  background: green;
+  background: #A4F4FF;
 }
 
 a {
+  font-family: georgia;
   color:black;
+  text-decoration: none;
 }
 
 .searchForm {
   padding-right: 2em;
+}
+
+.searchLimit {
+  padding-right: 2em;
+  font-family: georgia;
+}
+
+a:hover {
+  color: blue;
+}
+
+.header {
+  color: #A48AFF;
+  text-align: center;
+  font-family: georgia;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+
+label {
+  font-family: georgia;
+}
+
+input {
+  border-radius: 10px;
 }

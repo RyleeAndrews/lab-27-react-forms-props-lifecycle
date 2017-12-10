@@ -10,19 +10,17 @@ class SearchList extends React.Component {
   render(){
     return(
       <div>
-        <ul>
           {
             this.props.list.map((article,i) =>
-              <li key={i}>
+              <div key={i}>
                 <a href={article.data.url}>
                   <h3>{article.data.title}</h3>
                   <p>Amount of Up Votes: {article.data.ups}</p>
                 </a>
-              </li>
-            )
+                </div>
+              )
           }
-        </ul>
-      </div>
+          </div>
     );
   }
 }

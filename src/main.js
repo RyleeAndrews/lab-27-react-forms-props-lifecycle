@@ -14,9 +14,11 @@ class App extends React.Component {
   render(){
     return (
       <div id="mainComponent">
+        <div className="header">
         <h1>
           Reddit Search
         </h1>
+        </div>
         <div id="searchFormComponent">
           <SearchForm />
         </div>

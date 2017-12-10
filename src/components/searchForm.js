@@ -52,9 +52,9 @@ class SearchForm extends React.Component {
           <label className="searchLimit">
           Pick your number of displayed results:
             <input type="text" value={this.state.searchFormLimit} onChange={this.onChangeOfLimit}/>
+            <button className="submitButton" type="submit">Submit!</button>
           </label>
           <SearchFormList list={this.state.searchFormList}/>
-          <button type="submit">Submit!</button>
         </form>
       </div>
     );
