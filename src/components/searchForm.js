@@ -3,7 +3,7 @@
 import React from 'react';
 import superagent from 'superagent';
 import ApiHandle from '../../lib/apiStorage.js';
-
+import SearchFormList from './searchResultList.js';
 class SearchForm extends React.Component {
   constructor(props){
     super(props);
@@ -26,7 +26,7 @@ class SearchForm extends React.Component {
   }
   onSubmit(event){
     event.preventDefault();
-    let redditApi = `http://reddit.com/r/${this.state.searchFormBoard}.json?limit=${this.state.searchFormLimit}`;
+    let redditApi = `https://www.reddit.com/r/${this.state.searchFormBoard}.json?limit=${this.state.searchFormLimit}`;
     ApiHandle.fetchData(redditApi)
       .then( result => {
         console.log(redditApi);
@@ -48,21 +48,9 @@ class SearchForm extends React.Component {
           Pick your number of displayed results
             <input type="text" value={this.state.searchFormLimit} onChange={this.onChangeOfLimit}/>
           </label>
+          <SearchFormList list={this.state.searchFormList}/>
           <button type="submit">Submit!</button>
         </form>
-
-        <ul>
-          {
-            this.state.searchFormList.map((article,i) =>
-              <li key={i}>
-                <a href={article.data.url}>
-                  <h3>{article.data.title}</h3>
-                  <p>Amount of Up Votes: {article.data.ups}</p>
-                </a>
-              </li>
-            )
-          }
-        </ul>
       </div>
     );
   }
